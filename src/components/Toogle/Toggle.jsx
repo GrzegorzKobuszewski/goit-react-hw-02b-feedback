@@ -23,3 +23,5 @@ class Toggle extends Component {
 }
 
 export default Toggle
+
+/* opcjonalnie wyżej: export class Toggle extends Component { ... */
