@@ -11,19 +11,13 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
-  };
 
-  countPositiveFeedbackPercentage = () => {
-    let percentage = Math.floor(
-      ((this.state.good / this.countTotalFeedback()) * 100).toFixed(0)
-    );
-    if (isNaN(percentage)) {
-      return 0;
-    } else return percentage;
-  };
 
+/* Zamieniłem tę funkcję na handleFeedback, ponieważ gdyby tych buttonów było więcej nawet 10, 
+to musiałbym rozpisywac 10 razy tyle przypadków. Można więc napisać to prościej z wykorzystaniem 
+faktu, że nazwa argumentu jest taka sama jak nazwa stanu - zmiana po uwadze mentora ;) */
+  
+/*  
   fooOnLeaveFeedback = feedbackOpt => {
     switch (feedbackOpt) {
       case 'good':
@@ -38,6 +32,24 @@ export class App extends Component {
       default:
         return 0;
     }
+  };
+*/
+
+  handleFeedback = type => {
+    this.setState(prevState => ({ [type]: prevState[type] + 1 }));
+  };
+
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    let percentage = Math.floor(
+      ((this.state.good / this.countTotalFeedback()) * 100).toFixed(2)
+    );
+    if (isNaN(percentage)) {
+      return 0;
+    } else return percentage;
   };
 
   render() {
@@ -60,7 +72,7 @@ export class App extends Component {
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
-            onLeaveFeedback={this.fooOnLeaveFeedback}
+            onLeaveFeedback={this.handleFeedback}
           />
         </Section>
 
