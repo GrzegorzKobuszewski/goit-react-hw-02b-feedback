@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './Statistics.module.css';
 
-export const Statistics = ({
-    good,
-    neutral,
-    bad,
-    total,
-    positivePercentage,
-}) => {
+export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
     const Array = [
         [1, `Good: ${good}`],
         [2, `Neutral: ${neutral}`],
@@ -15,6 +9,7 @@ export const Statistics = ({
         [4, `Total: ${total}`],
         [5, `Positive feedback: ${positivePercentage}%`],
     ];
+    
     return (
         <ul className={styles.list}>
             {Array.map(([id, superString]) => (
