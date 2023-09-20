@@ -41,7 +41,10 @@ faktu, że nazwa argumentu jest taka sama jak nazwa stanu - zmiana po uwadze men
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad
+    /* lub po prostu: return this.state.good + this.state.neutral + this.state.bad; */
+    
   };
 
   countPositiveFeedbackPercentage = () => {
