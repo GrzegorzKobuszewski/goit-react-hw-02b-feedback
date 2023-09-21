@@ -48,9 +48,7 @@ faktu, że nazwa argumentu jest taka sama jak nazwa stanu - zmiana po uwadze men
   };
 
   countPositiveFeedbackPercentage = () => {
-    let percentage = Math.floor(
-      ((this.state.good / this.countTotalFeedback()) * 100).toFixed(2)
-    );
+    let percentage = ((this.state.good / this.countTotalFeedback()) * 100).toFixed();
     if (isNaN(percentage)) {
       return 0;
     } else return percentage;

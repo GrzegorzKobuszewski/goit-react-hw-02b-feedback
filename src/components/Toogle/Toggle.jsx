@@ -3,7 +3,7 @@ import styles from './Toogle.module.css';
 
 class Toggle extends Component {
 
-    state = { value: 0 }
+    state = { isOpen: true }
 
     toggle = () => {
         this.setState(state => ({ isOpen: !state.isOpen }));
